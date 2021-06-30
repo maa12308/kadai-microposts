@@ -15,7 +15,7 @@
                         <p class="mb-0">{!! nl2br(e($micropost->content)) !!}</p>
                     </div>
                     <div>
-                        @if (Auth::id() == $user->id)
+                        @if (Auth::id() != $micropost->id)
                             @if (Auth::user()->is_favorite($micropost->id))
                                 {{-- お気に入りをはずすフォーム--}}
                                 {!! Form::open(['route' => ['favorites.unfavorite', $micropost->id], 'method' => 'delete']) !!}
