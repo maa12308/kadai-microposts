@@ -15,7 +15,7 @@
                         <p class="mb-0">{!! nl2br(e($micropost->content)) !!}</p>
                     </div>
                     <div>
-                        
+                        @if (Auth::id() == $user->id)
                             @if (Auth::user()->is_favorite($micropost->id))
                                 {{-- お気に入りをはずすフォーム--}}
                                 {!! Form::open(['route' => ['favorites.unfavorite', $micropost->id], 'method' => 'delete']) !!}
@@ -27,7 +27,7 @@
                                     {!! Form::submit('Favorite', ['class' => "btn btn-light"]) !!}
                                 {!! Form::close() !!}
                             @endif
-                        
+                        @endif
                     </div>
                     <div>
                         @if (Auth::id() == $micropost->user_id)
